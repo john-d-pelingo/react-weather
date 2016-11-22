@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var React = require('react');
 
@@ -16,17 +16,46 @@ var React = require('react');
 // Doesn't maintain any state
 var About = function About(props) {
     return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-            'h3',
-            null,
-            'About'
+            "h1",
+            { className: "text-center" },
+            "About"
         ),
         React.createElement(
-            'p',
+            "p",
             null,
-            'Welcome to the about pages!'
+            "This is a weather application built on React using a bunch of tools."
+        ),
+        React.createElement(
+            "p",
+            null,
+            "Here are some of the tools I used:"
+        ),
+        React.createElement(
+            "ul",
+            null,
+            React.createElement(
+                "li",
+                null,
+                React.createElement(
+                    "a",
+                    { href: "https://facebook.github.io/react", target: "_blank" },
+                    "React"
+                ),
+                " - The JavaScript framework used"
+            ),
+            React.createElement(
+                "li",
+                null,
+                React.createElement(
+                    "a",
+                    { href: "http://openweathermap.org", target: "_blank" },
+                    "Open Weather Map"
+                ),
+                " - Used to search for weather data by city name"
+            )
         )
     );
 };
