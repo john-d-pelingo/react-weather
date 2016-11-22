@@ -21,6 +21,7 @@ var {Link, IndexLink} = require('react-router');
 // Doesn't maintain any state
 // Use className for HTML classes
 // jsx takes className and convert it to class before it shows it to the browser
+// Using Menu and Top Bar Foundation components
 let Nav = React.createClass({
     // Handler for the search form
     onSearch: function (e) {

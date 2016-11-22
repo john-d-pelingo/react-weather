@@ -2,8 +2,10 @@
 
 var React = require('react');
 
-// Presentational/Dumb component
+var _require = require('react-router'),
+    Link = _require.Link;
 
+// Presentational/Dumb component
 // let Examples = React.createClass({
 //     render: function () {
 //         return (
@@ -14,19 +16,43 @@ var React = require('react');
 
 // Stateless functional component
 // Doesn't maintain any state
+
+
 var Examples = function Examples(props) {
     return React.createElement(
         'div',
         null,
         React.createElement(
-            'h3',
-            null,
+            'h1',
+            { className: 'text-center' },
             'Examples'
         ),
         React.createElement(
             'p',
             null,
-            'Welcome to the examples page!'
+            'Here are a few example locations to try out:'
+        ),
+        React.createElement(
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                React.createElement(
+                    Link,
+                    { to: '/?location=Philadelphia' },
+                    'Philadelphia, PA'
+                )
+            ),
+            React.createElement(
+                'li',
+                null,
+                React.createElement(
+                    Link,
+                    { to: '/?location=Rio' },
+                    'Rio, Brazil'
+                )
+            )
         )
     );
 };
