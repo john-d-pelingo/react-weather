@@ -14,7 +14,10 @@ let React = require('react');
 // Doesn't maintain any state
 let About = (props) => {
     return (
-        <h3>About Component</h3>
+        <div>
+            <h3>About</h3>
+            <p>Welcome to the about pages!</p>
+        </div>
     );
 };
 
