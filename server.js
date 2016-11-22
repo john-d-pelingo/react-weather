@@ -9,11 +9,11 @@ const PORT = process.env.PORT || 3000;
 // Express middleware: do something with every request
 app.use(function (req, res, next){
     // https or http
-    if (req.headers['x-forwarded-proto'] === 'http') {
-        // Process as normal
-        next();
-    } else {
+    if (req.headers['x-forwarded-proto'] === 'https') {
+        // Only if it is https do we really wanna redirect
         res.redirect('http://' + req.hostname + req.url);
+    } else {
+        next();
     }
 });
 
