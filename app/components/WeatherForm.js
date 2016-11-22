@@ -4,6 +4,7 @@ var React = require('react');
 
 // Presentational/Dumb component
 // Will get data from user and send it to the Weather component
+// Using Button Foundation component
 var WeatherForm = React.createClass({
     displayName: 'WeatherForm',
 
@@ -42,7 +43,7 @@ var WeatherForm = React.createClass({
                     null,
                     React.createElement(
                         'button',
-                        null,
+                        { className: 'button expanded hollow' },
                         'Submit'
                     )
                 )

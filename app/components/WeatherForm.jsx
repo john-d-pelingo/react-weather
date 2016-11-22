@@ -2,6 +2,7 @@ let React = require('react');
 
 // Presentational/Dumb component
 // Will get data from user and send it to the Weather component
+// Using Button Foundation component
 let WeatherForm = React.createClass({
     onFormSubmit: function (e) {
         e.preventDefault();
@@ -23,7 +24,7 @@ let WeatherForm = React.createClass({
                 <form onSubmit={this.onFormSubmit}>
                     <div><input type="text" ref="location" placeholder="Enter location ..."/></div>
                     <div>
-                        <button>Submit</button>
+                        <button className="button expanded hollow">Submit</button>
                     </div>
                 </form>
             </div>

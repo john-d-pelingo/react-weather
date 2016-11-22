@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var React = require('react');
 
@@ -26,14 +26,14 @@ var WeatherMessage = function WeatherMessage(_ref) {
         temp = _ref.temp;
 
     return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-            'h4',
-            null,
-            'It is ',
+            "h3",
+            { className: "text-center" },
+            "It is ",
             temp,
-            ' in ',
+            " in ",
             location
         )
     );
