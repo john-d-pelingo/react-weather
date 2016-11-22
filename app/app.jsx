@@ -16,10 +16,14 @@ const Weather = require('Weather');
 const About = require('About');
 const Examples = require('Examples');
 
+// Load foundation (css!) and inject to HTML (style!)
+require('style!css!foundation-sites/dist/foundation.min.css');
+// Fire up foundation
+$(document).foundation();
+
 // Render to the HTML DOM
 // The Main component will be in charge of rendering the main app
 // The weather component is our index/home
-//
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
