@@ -5,6 +5,7 @@ var React = require('react');
 var WeatherForm = require('WeatherForm');
 var WeatherMessage = require('WeatherMessage');
 var openWeatherMap = require('openWeatherMap');
+var ErrorModal = require('ErrorModal');
 
 // The Weather component will maintain state e.g. location and the temperature
 var Weather = React.createClass({
@@ -42,7 +43,11 @@ var Weather = React.createClass({
         // !!!
 
         // Fire loader
-        this.setState({ isLoading: true });
+        this.setState({
+            isLoading: true,
+            // Clear out any previous error message
+            errorMessage: undefined
+        });
 
         openWeatherMap.getTemperature(location).then(function (temperature) {
             // this gets lost and uses for openWeatherMap
@@ -52,8 +57,14 @@ var Weather = React.createClass({
                 isLoading: false
             });
         }, function (errorMessage) {
-            that.setState({ isLoading: false });
-            alert(errorMessage);
+            that.setState({
+                isLoading: false,
+                // What gets passed back from the module we created for the openweathermap
+                // API is a JavaScript object
+                // Get the error message
+                errorMessage: errorMessage.message
+            });
+            // alert(errorMessage);
         });
     },
     render: function render() {
@@ -62,7 +73,8 @@ var Weather = React.createClass({
         var _state = this.state,
             isLoading = _state.isLoading,
             location = _state.location,
-            temp = _state.temp;
+            temp = _state.temp,
+            errorMessage = _state.errorMessage;
 
         // Conditionally render components given a certain state
 
@@ -78,6 +90,14 @@ var Weather = React.createClass({
             }
         }
 
+        // Conditionally render the ErrorModal component
+        function renderError() {
+            if (typeof errorMessage === 'string') {
+                // We have an error
+                return React.createElement(ErrorModal, null);
+            }
+        }
+
         return React.createElement(
             'div',
             null,
@@ -87,7 +107,8 @@ var Weather = React.createClass({
                 'Get Weather'
             ),
             React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-            renderMessage()
+            renderMessage(),
+            renderError()
         );
     }
 });

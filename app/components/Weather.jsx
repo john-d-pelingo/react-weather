@@ -3,6 +3,7 @@ let React = require('react');
 let WeatherForm = require('WeatherForm');
 let WeatherMessage = require('WeatherMessage');
 let openWeatherMap = require('openWeatherMap');
+let ErrorModal = require('ErrorModal');
 
 // The Weather component will maintain state e.g. location and the temperature
 let Weather = React.createClass({
@@ -38,7 +39,11 @@ let Weather = React.createClass({
         // !!!
 
         // Fire loader
-        this.setState({isLoading: true});
+        this.setState({
+            isLoading   : true,
+            // Clear out any previous error message
+            errorMessage: undefined
+        });
 
         openWeatherMap.getTemperature(location).then(
             function (temperature) {
@@ -50,15 +55,21 @@ let Weather = React.createClass({
                 });
             },
             function (errorMessage) {
-                that.setState({isLoading: false});
-                alert(errorMessage);
+                that.setState({
+                    isLoading: false,
+                    // What gets passed back from the module we created for the openweathermap
+                    // API is a JavaScript object
+                    // Get the error message
+                    errorMessage: errorMessage.message
+                });
+                // alert(errorMessage);
             }
         );
     },
     render         : function () {
         // I know that it exists in the state object
         // Retrieve location and map variable off from the state
-        const {isLoading, location, temp} = this.state;
+        const {isLoading, location, temp, errorMessage} = this.state;
 
         // Conditionally render components given a certain state
         function renderMessage() {
@@ -69,11 +80,22 @@ let Weather = React.createClass({
             }
         }
 
+        // Conditionally render the ErrorModal component
+        function renderError() {
+            if (typeof errorMessage === 'string') {
+                // We have an error
+                return (
+                    <ErrorModal/>
+                );
+            }
+        }
+
         return (
             <div>
                 <h1 className="text-center">Get Weather</h1>
                 <WeatherForm onSearch={this.handleSearch}/>
                 {renderMessage()}
+                {renderError()}
             </div>
         );
     }
