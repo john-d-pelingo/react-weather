@@ -1,4 +1,6 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
+let ReactDOMServer = require('react-dom/server');
 
 // Using Error Modal Foundation component
 // By default modals are hidden
@@ -17,15 +19,9 @@ let ErrorModal = React.createClass({
     // Invoked immediately after a component is mounted
     // Initialization that requires DOM nodes should go here
     componentDidMount: function () {
-        let modal = new Foundation.Reveal($('#error-modal'));
-        // Show the modal
-        modal.open();
-    },
-    render           : function () {
         let {title, message} = this.props;
 
-
-        return (
+        let modalMarkup = (
             // Empty string is required for the custom attributes to be rendered
             <div id="error-modal" className="reveal tiny text-center" data-reveal="">
                 <h4>{title}</h4>
@@ -38,6 +34,25 @@ let ErrorModal = React.createClass({
                     }
                     <button className="button hollow" data-close="">Okay</button>
                 </p>
+            </div>
+        );
+
+        // Transform jsx code to string
+        let $modal = $(ReactDOMServer.renderToString(modalMarkup));
+        // Add the markup to the DOM
+        // Takes the component and returns the DOM node where that component lives
+        $(ReactDOM.findDOMNode(this)).html($modal);
+
+        let modal = new Foundation.Reveal($('#error-modal'));
+        // Show the modal
+        modal.open();
+    },
+    render           : function () {
+        // After React puts the elements in the DOM, Foundation is removing them
+        // so we move the functionality of render to the componentDidMount
+        return (
+            <div className="the-dom-node">
+
             </div>
         );
     }
