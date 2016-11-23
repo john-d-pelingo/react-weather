@@ -23,15 +23,17 @@ module.exports = {
             // debugger;
             if (response.data.cod && response.data.message) {
                 // Properly catch all errors
-                throw new Error('Success in call but error in result: ' + response.data.message);
+                throw new Error( /*'Success in call but error in result: ' + */response.data.message);
             } else {
                 // main.temp because that's the JSON data returned by the API
                 return response.data.main.temp;
             }
-        }, function (response) {
+        }, function (err) {
             // Error
             // debugger;
-            throw new Error('Error in call: ' + response);
+
+            // throw new Error(err.response.data.message);
+            throw new Error( /*'Error in call: ' + */'Unable to fetch weather for the location.');
         });
     }
 };
