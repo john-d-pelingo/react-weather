@@ -103,7 +103,7 @@ var Weather = React.createClass({
             null,
             React.createElement(
                 'h1',
-                { className: 'text-center' },
+                { className: 'text-center page-title' },
                 'Get Weather'
             ),
             React.createElement(WeatherForm, { onSearch: this.handleSearch }),

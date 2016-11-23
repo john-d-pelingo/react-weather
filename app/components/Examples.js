@@ -24,7 +24,7 @@ var Examples = function Examples(props) {
         null,
         React.createElement(
             'h1',
-            { className: 'text-center' },
+            { className: 'text-center page-title' },
             'Examples'
         ),
         React.createElement(

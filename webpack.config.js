@@ -41,15 +41,16 @@ module.exports = {
         // Pick names for our components
         // Tell webpack where to find that component
         alias     : {
-            Main          : 'app/components/Main.jsx',
-            Nav           : 'app/components/Nav.jsx',
-            Weather       : 'app/components/Weather.jsx',
-            WeatherForm   : 'app/components/WeatherForm.jsx',
-            WeatherMessage: 'app/components/WeatherMessage.jsx',
-            About         : 'app/components/About.jsx',
-            Examples      : 'app/components/Examples.jsx',
-            openWeatherMap: 'app/api/openWeatherMap.jsx',
-            ErrorModal    : 'app/components/ErrorModal.jsx'
+            Main             : 'app/components/Main.jsx',
+            Nav              : 'app/components/Nav.jsx',
+            Weather          : 'app/components/Weather.jsx',
+            WeatherForm      : 'app/components/WeatherForm.jsx',
+            WeatherMessage   : 'app/components/WeatherMessage.jsx',
+            About            : 'app/components/About.jsx',
+            Examples         : 'app/components/Examples.jsx',
+            openWeatherMap   : 'app/api/openWeatherMap.jsx',
+            ErrorModal       : 'app/components/ErrorModal.jsx',
+            applicationStyles: 'app/styles/app.css'
         },
         // List of file extensions that we want to process
         extensions: ['', '.js', '.jsx'],

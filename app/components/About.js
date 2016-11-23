@@ -20,7 +20,7 @@ var About = function About(props) {
         null,
         React.createElement(
             "h1",
-            { className: "text-center" },
+            { className: "text-center page-title" },
             "About"
         ),
         React.createElement(

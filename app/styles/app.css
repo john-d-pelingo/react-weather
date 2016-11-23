@@ -1,0 +1,9 @@
+.page-title {
+    margin : 2.5rem 0;
+}
+
+input[type=search] {
+    -webkit-box-shadow : none;
+    -moz-box-shadow    : none;
+    box-shadow         : none;
+}

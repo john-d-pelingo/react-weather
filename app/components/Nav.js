@@ -94,7 +94,7 @@ var Nav = React.createClass({
                         React.createElement(
                             'li',
                             null,
-                            React.createElement('input', { type: 'search', placeholder: 'Search' })
+                            React.createElement('input', { type: 'search', placeholder: 'Search city' })
                         ),
                         React.createElement(
                             'li',

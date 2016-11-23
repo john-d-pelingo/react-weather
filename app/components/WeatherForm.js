@@ -36,7 +36,7 @@ var WeatherForm = React.createClass({
                 React.createElement(
                     'div',
                     null,
-                    React.createElement('input', { type: 'text', ref: 'location', placeholder: 'Enter location ...' })
+                    React.createElement('input', { type: 'search', ref: 'location', placeholder: 'Search city' })
                 ),
                 React.createElement(
                     'div',
