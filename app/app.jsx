@@ -21,8 +21,8 @@ require('style!css!foundation-sites/dist/foundation.min.css');
 // Fire up foundation
 $(document).foundation();
 
-// Load app.css
-require('style!css!applicationStyles');
+// Same as above for app.scss plus fire the sass loader (sass!)
+require('style!css!sass!applicationStyles');
 
 // Render to the HTML DOM
 // The Main component will be in charge of rendering the main app
