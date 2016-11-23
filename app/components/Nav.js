@@ -35,7 +35,19 @@ var Nav = React.createClass({
     // Handler for the search form
     onSearch: function onSearch(e) {
         e.preventDefault();
-        alert('Not yet wired up!');
+
+        // alert('Not yet wired up!');
+
+        // Fetch the value of the ref search from the search input
+        var location = this.refs.search.value;
+        var encodedLocation = encodeURIComponent(location);
+
+        if (location.trim().length > 0) {
+            this.refs.search.value = '';
+
+            // Go to the hompage
+            window.location.hash = '#/?location=' + encodedLocation;
+        }
     },
     render: function render() {
         return React.createElement(
@@ -94,7 +106,7 @@ var Nav = React.createClass({
                         React.createElement(
                             'li',
                             null,
-                            React.createElement('input', { type: 'search', placeholder: 'Search city' })
+                            React.createElement('input', { type: 'search', ref: 'search', placeholder: 'Search city' })
                         ),
                         React.createElement(
                             'li',

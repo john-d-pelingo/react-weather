@@ -46,7 +46,10 @@ var Weather = React.createClass({
         this.setState({
             isLoading: true,
             // Clear out any previous error message
-            errorMessage: undefined
+            errorMessage: undefined,
+            // Clean up data in every search
+            location: undefined,
+            temp: undefined
         });
 
         openWeatherMap.getTemperature(location).then(function (temperature) {
@@ -66,6 +69,26 @@ var Weather = React.createClass({
             });
             // alert(errorMessage);
         });
+    },
+    componentDidMount: function componentDidMount() {
+        // Pull out parameters in the URL
+        var location = this.props.location.query.location;
+
+        if (location && location.trim().length > 0) {
+            this.handleSearch(location);
+            // Remove the location query string after the weather has been successfully searched
+            window.location.hash = '#/';
+        }
+    },
+    // Automatically update the props of Weather.jsx when the URL changes by listening to that change
+    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+        var location = newProps.location.query.location;
+
+        if (location && location.trim().length > 0) {
+            this.handleSearch(location);
+            // Remove the location query string after the weather has been successfully searched
+            window.location.hash = '#/';
+        }
     },
     render: function render() {
         // I know that it exists in the state object
