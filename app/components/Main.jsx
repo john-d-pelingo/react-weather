@@ -32,6 +32,10 @@ let Main = (props) => {
             <Nav />
             <div className="row">
                 <div className="columns medium-6 large-4 small-centered">
+                    {
+                        /* prop.children is passed down from the Router
+                         */
+                    }
                     {props.children}
                 </div>
             </div>
